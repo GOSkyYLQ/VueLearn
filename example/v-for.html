@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>v-for</title>
+<title>v-for</title>
+<script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+
+<body>
+	<h1>v-for实例</h1>
+	<hr>
+	<div id="app">
+		<ul>
+			<li v-for="item in changeitems">
+				{{item}}
+			</li>
+		</ul>
+		<hr>
+		<ul>
+			<li v-for="(student,index) in sortStudent">
+				{{index+1}}:{{student.name}}-{{student.age}}
+			</li>
+		</ul>
+	</div>
+	<script type="text/javascript">
+		var app = new Vue({
+			el:'#app',
+			data:{
+				items:[10,5,21,6,14,32,18],
+				students:[
+					{name:'YLQ',age:'22'},
+					{name:'ylq',age:'15'},
+					{name:'LL',age:'23'},
+					{name:'ll',age:'17'},
+				]
+			},
+			computed:{
+				changeitems:function(){
+					return this.items.sort(sortNumber);
+				},
+				sortStudent:function(){
+					return sortByKey(this.students,'age')
+				}
+			}
+		});
+		function sortNumber(a,b){
+			return a-b;
+		}
+		function sortByKey(array,key){
+			return array.sort(function(a,b){
+				var x=a[key];
+				var y=b[key];
+				return ((x<y)?-1:((x>y)?1:0));
+			});
+		}
+	</script>
+</body>
+</html>

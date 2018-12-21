@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>v-on</title>
+<script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+
+<body>
+	<h1>v-on 实例</h1>
+	<hr>
+	<div id="app">
+		{{num}}
+		<p>
+			<button v-on:click='jafen'>加分</button>
+			<button @click='jianfen'>减分</button>
+			<input type="text" v-on:keyup.enter="onEnter" v-model="num2">
+		</p>
+		
+	</div>
+	<script type="text/javascript">
+		var app = new Vue({
+			el:'#app',
+			data:{
+				num:0,
+				num2:1
+			},
+			methods:{
+				jafen:function(){
+					//this.num++;
+					this.num=this.num + parseInt(this.num2)
+				},
+				jianfen:function(){
+					//this.num--;
+					this.num=this.num - parseInt(this.num2)
+				},
+				/**onEnter:function(){
+					this.num=this.num + parseInt(this.num2)
+				}**/
+			}
+		})
+	</script>
+</body>
+</html>
